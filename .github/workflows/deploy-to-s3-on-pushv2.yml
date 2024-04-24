@@ -1,0 +1,73 @@
+name: Deploy to Amazon s3
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+      - run: npm install
+      - run: npm run build --if-present
+
+      # 👇 Store the dist folder
+      - uses: actions/upload-artifact@v3
+        with:
+          name: app-build
+          path: build
+
+  # deploy:
+  #   needs: [build]
+  #   steps:
+  #     # 👇 Get the dist folder
+  #     - name: Download build artifacts
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: app-build
+  #     - run: ls dist
+
+  deploy:
+    needs: [build]
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: app-build
+
+      - name: Run code sync to s3 bucket
+        id: upload-to-s3
+        env:
+          repo: ${{ github.repository }}
+          # s3BucketName: s3://resume-blp/test/
+          s3BucketName: s3://bens-resume-challenge-brc780/
+        run: |
+          aws s3 sync ${{ github.workspace }}/build  ${{ env.s3BucketName }} --acl public-read
+        # run: |
+        #   aws s3 sync ${{ github.workspace }}/build ${{ env.s3BucketName }}

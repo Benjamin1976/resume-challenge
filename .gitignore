@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+/website-templates
+
 # testing
 /coverage
 
