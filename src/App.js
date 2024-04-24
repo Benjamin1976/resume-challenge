@@ -9,6 +9,7 @@ import Links from "./links/Links";
 import { useEffect } from "react";
 import NavBar from "./common/NavBar";
 import { urls } from "./cloudprovider";
+import getAndUpdateCounter from "./counter";
 
 const abouts = resume.about;
 const contacts = resume.contacts;
@@ -24,36 +25,7 @@ function App() {
 
   useEffect(() => {
     // var aws = 0;
-    function updateCounter(newVisits) {
-      fetch(urls[0], {
-        method: "POST",
-        mode: "cors",
-        body: JSON.stringify({ visits: newVisits }),
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-        })
-        .catch((err) => console.log(err));
-    }
-
-    fetch(urls[1], {
-      method: "GET",
-      mode: "cors",
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then(async (data) => {
-        console.log(data);
-        let visits = parseInt(data.visits);
-        visits++;
-        document.getElementById("counter").innerText = visits;
-        updateCounter(visits);
-      })
-      .catch((err) => console.log(err));
+    getAndUpdateCounter(urls);
   }, []);
 
   return (
