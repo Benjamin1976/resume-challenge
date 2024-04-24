@@ -59,7 +59,7 @@ function App() {
       <div className="row">
         {/* <div className="col-sm-0 col-md-3 col-md-3"> </div> */}
         <div id="heading-top" className="col-sm-12 col-md-12">
-          <h2 style={{ display: "inline" }}>Benjamin Parsons Test 1</h2>
+          <h2 style={{ display: "inline" }}>Benjamin Parsons</h2>
           <span className="float-end">
             <button
               type="button"
