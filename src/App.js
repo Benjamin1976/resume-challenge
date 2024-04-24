@@ -26,7 +26,8 @@ function App() {
     // var aws = 0;
     function updateCounter(newVisits) {
       fetch(urls[0], {
-        method: "GET",
+        method: "POST",
+        mode: "cors",
         body: JSON.stringify({ visits: newVisits }),
       })
         .then((response) => {
@@ -40,6 +41,7 @@ function App() {
 
     fetch(urls[1], {
       method: "GET",
+      mode: "cors",
     })
       .then((response) => {
         return response.json();
