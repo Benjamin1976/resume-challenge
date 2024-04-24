@@ -1,4 +1,4 @@
-name: Deploy to Amazon s3
+name: Deploy to Amazon s3 v2
 
 on:
   push:

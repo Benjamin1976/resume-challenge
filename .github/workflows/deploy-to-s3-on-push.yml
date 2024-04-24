@@ -1,4 +1,4 @@
-name: Deploy to Amazon s3
+name: Deploy to Amazon s3 Original
 
 on:
   push:
@@ -25,6 +25,6 @@ jobs:
         id: upload-to-s3
         env:
           repo: ${{ github.repository }}
-          s3BucketName: s3://resume-blp/test/
+          s3BucketName: s3://bens-resume-challenge-brc780/
         run: |
           aws s3 sync ${{ github.workspace }} ${{ secrets.AWS_BUCKET_S3_URI }} --acl public-read
