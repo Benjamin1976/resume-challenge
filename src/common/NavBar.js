@@ -1,9 +1,8 @@
 import React from "react";
 
 const NavBar = () => (
-  <nav className="navbar navbar-sm navbar-expand-md navbar-dark bg-secondary">
+  <nav className="navbar navbar-sm navbar-expand-md navbar-dark bg-primary">
     <div className="container-fluid">
-      {/* <span className="navbar-brand">Benjamin Parsons</span> */}
       <button
         className="navbar-toggler btn-sm navbar-menu-text"
         type="button"
@@ -13,8 +12,9 @@ const NavBar = () => (
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
-        Sections <span className="navbar-toggler-icon small"></span>
+        <span className="navbar-toggler-icon small "></span>
       </button>
+
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
           <a className="nav-link" href="#Top">
@@ -27,7 +27,7 @@ const NavBar = () => (
             Jobs
           </a>
           <a className="nav-link" href="#certifications">
-            Cerifications
+            Certifications
           </a>
           <a className="nav-link" href="#education">
             Education

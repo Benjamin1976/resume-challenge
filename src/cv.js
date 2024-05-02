@@ -395,6 +395,7 @@ var cv = {
       end: "30-Mar-2001",
       current: false,
       company: "Optus Cable & Wireless",
+      role: "Doing temporary work at Optus, I worked to automate order processing using MacOS.",
       order: 101,
     },
     {
@@ -402,6 +403,7 @@ var cv = {
       end: "30-Dec-2000",
       current: false,
       company: "Computershare Registry",
+      role: "As a Data Analyst, we processing mass data submission forms utilising OCR recognition.",
       order: 102,
     },
     {
@@ -409,6 +411,7 @@ var cv = {
       end: "30-Nov-2000",
       current: false,
       company: "Institution of Engineers",
+      role: "As a Client facing agent, I was undertaking event management for the upcoming Institute of Engineers company forum.",
       order: 103,
     },
     {
@@ -416,6 +419,7 @@ var cv = {
       end: "30-Oct-2000",
       current: false,
       company: "Beasley's Teahouse & Nursery",
+      role: "As a Customer service representative, I worked directly with customers to ensure a pleasant stay.",
       order: 104,
     },
     {
@@ -423,6 +427,7 @@ var cv = {
       end: "30-Feb-1999",
       current: false,
       company: "Pacific Access",
+      role: "As a Customer Consultant for White & Yellow Pages, my role was to ensure Customer's listings were up to date.  During this role, I utilised automation tools to increase my workload 8 fold, processing 8 hours or work in 1 hour.  Post this, I was assigned a role to automate the extraction of sales data from multiple databases using VB Code.",
       order: 105,
     },
     {
@@ -430,6 +435,7 @@ var cv = {
       end: "30-Feb-1998",
       current: false,
       company: "Woolworths t/a Safeway Supermarkets",
+      role: "Starting as an Impact Manager, assessing the impact of consumables, I was quickly promoted to Night Store Manager, which involved running the store from 5pm, managing all aspects of Customer Service, Money handling and processing, Customer Complaints, Staff Management, Store Quality, Store Re-stocking and all aspects of running a Grocery Store.",
       order: 106,
     },
     {
@@ -437,6 +443,7 @@ var cv = {
       end: "30-Aug-1996",
       current: false,
       company: "Cafe India",
+      role: "This was a short role by delivering Indian food around Melbourne's east suburbs.",
       order: 107,
     },
     {
@@ -444,6 +451,7 @@ var cv = {
       end: "30-Oct-1995",
       current: false,
       company: "Julians Lodge, Falls Creek",
+      role: "At Falls creek, I help manage the lodge, taking on all tasks required to manage a small hotel / lodge.",
       order: 108,
     },
     {
@@ -451,6 +459,7 @@ var cv = {
       end: "30-Jun-1994",
       current: false,
       company: "Mc Donalds Australia",
+      role: "At McDonalds, I started as a front of shop staff, moving to back of staff and finally a crew trainer.  Working through differing shifts, I quickly earned the recognition of being a valuable staff member.",
       order: 109,
     },
     {
@@ -458,6 +467,7 @@ var cv = {
       end: "30-Nov-1994",
       current: false,
       company: "CCC Toyota Salvage",
+      role: "At the wrecking yard, I learned valuable skills pulling cars to bits and sometimes putting them back together correctly.  This was fun and messy work but a very enjoyable experience, giving me invaluable knowledge how to maintain and fix a car.",
       order: 110,
     },
   ],
