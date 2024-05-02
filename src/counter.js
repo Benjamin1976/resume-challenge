@@ -14,7 +14,7 @@ function updateCounter(urls, newVisits) {
 function getAndUpdateCounter(urls) {
   fetch(urls[1], {
     method: "GET",
-    mode: "cors",
+    // mode: "cors",
   })
     .then((response) => {
       return response.json();
