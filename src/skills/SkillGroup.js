@@ -1,6 +1,4 @@
 import React from "react";
-import "../Custom.css";
-// import ShowHideButton from "../common/ShowHideButton";
 import Skill from "./Skill";
 
 const SkillGroup = ({ skillGrp, idx }) => {

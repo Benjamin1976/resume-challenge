@@ -1,36 +1,20 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Certification from "./Certification";
-import ScrollTop from "../common/ScrollTop";
+import Heading from "../common/Heading";
 
 const Certifications = ({ certs }) => {
   let kWord = "Certifications";
   if (!certs) return <div>loading {kWord}</div>;
 
   return (
-    <div className="container">
-      <div
-        className="row heading bg-primary text-white"
-        key={[kWord, "row", "title"].join("-")}
-      >
-        <div
-          id="certifications"
-          className="col col-8"
-          key={[kWord, "col", "title"].join("-")}
-        >
-          {kWord}
-        </div>
-        <div
-          id="certifications"
-          className="col col-4 text-end"
-          key={[kWord, "col", "scrollTop"].join("-")}
-        >
-          <ScrollTop />
-        </div>
+    <Fragment>
+      <Heading kWord={kWord} />
+      <div className="row show collapseAll" id={`collapse${kWord}`}>
+        {certs.map((cert, idx) => (
+          <Certification idx={idx} cert={cert} key={[kWord, idx].join("-")} />
+        ))}
       </div>
-      {certs.map((cert, idx) => (
-        <Certification idx={idx} cert={cert} key={[kWord, idx].join("-")} />
-      ))}
-    </div>
+    </Fragment>
   );
 };
 

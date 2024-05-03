@@ -1,4 +1,4 @@
-const checkContactType = (contactType, name, details) => {
+export const checkContactType = (contactType, name, details) => {
   if (contactType.toLowerCase() === "email") {
     return <a href={`mailto:${details}`}>{details}</a>;
   }
@@ -18,4 +18,9 @@ const checkContactType = (contactType, name, details) => {
   }
 };
 
-export default checkContactType;
+export const formatDate = (date) => {
+  let theDate = new Date(date);
+  let theMonth = theDate.toLocaleString("default", { month: "long" });
+  let theYear = theDate.toLocaleString("default", { year: "2-digit" });
+  return theMonth.substring(0, 3) + "-" + theYear;
+};

@@ -1,22 +1,15 @@
 import React, { Fragment } from "react";
-import "../Custom.css";
 import Section from "../common/Section";
+import { formatDate } from "../common/common";
 
 const Job = ({ job, idx }) => {
   let k = idx;
-
-  const formatDate = (date) => {
-    let theDate = new Date(date);
-    let theMonth = theDate.toLocaleString("default", { month: "long" });
-    let theYear = theDate.toLocaleString("default", { year: "2-digit" });
-    return theMonth.substring(0, 3) + "-" + theYear;
-  };
 
   return !job ? (
     <div key={["job-not-loaded", k].join("-")}>unable to load job</div>
   ) : (
     job.map((details, dIdx) => {
-      const { title, position, start, end, role, project } = details;
+      const { title, position, start, end, role, current, project } = details;
       let k2 = [idx, dIdx].join("-");
       return (
         <Fragment key={"fragment-" + k2}>
@@ -28,7 +21,6 @@ const Job = ({ job, idx }) => {
               className="col col-4 jobheading"
               key={[k2, "col", "title"].join("-")}
             >
-              {/* <p className="font-weight-bold">{title || ""}</p> */}
               {title || ""}
             </div>
             <div className="col col-4" key={[k2, "col", "position"].join("-")}>
@@ -38,8 +30,10 @@ const Job = ({ job, idx }) => {
               className="col col-4 date"
               key={[k2, "col", "dates"].join("-")}
             >
-              {start ? formatDate(start) : ""}
-              {end ? " - " + formatDate(end) : ""}
+              <span className="float-end">
+                {start ? formatDate(start) : ""}
+                {end ? " - " + formatDate(end) : current ? " - today" : ""}
+              </span>
             </div>
           </div>
           {project ? (

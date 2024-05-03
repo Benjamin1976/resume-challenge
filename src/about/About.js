@@ -1,6 +1,4 @@
 import React, { Fragment } from "react";
-import "../Custom.css";
-// import ShowHideButton from "../common/ShowHideButton";
 
 const About = ({ aboutTitle, aboutGrp, idx }) => {
   let k = idx;

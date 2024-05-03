@@ -1,5 +1,5 @@
 import React from "react";
-import "../Custom.css";
+import { formatDate } from "../common/common";
 
 const Education = ({ edu, idx }) => {
   let k = idx;
@@ -21,8 +21,8 @@ const Education = ({ edu, idx }) => {
         {course || ""}
       </div>
       <div className="col col-4 date" key={[k2, "col", "dates"].join("-")}>
-        {start || ""}
-        {end ? " - " + end : ""}
+        {start ? formatDate(start) : ""}
+        {end ? " - " + formatDate(end) : ""}
       </div>
     </div>
   );

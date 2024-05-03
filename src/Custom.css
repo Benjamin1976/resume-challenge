@@ -2,12 +2,6 @@ body {
   font-size: 0.8rem;
 }
 
-.left-panel {
-  /* padding: 0.7rem; */
-  /* background-color: rgb(209, 209, 209); */
-  /* margin-bottom: 0.5rem; */
-}
-
 .navbar-toggler-icon {
   width: 1.2rem;
   height: 1.2rem;
@@ -18,18 +12,8 @@ body {
 }
 
 .contactrow {
-  /* paddingah-top: 0.3rem; */
   padding-left: 0;
 }
-
-/* .navbar {
-  inherits: bootstrap_navbar;
-  height: 40px;
-} */
-
-/* #certifications {
-  scroll-behavior: smooth;
-} */
 
 .contactheading {
   font-size: 1rem;
@@ -44,7 +28,6 @@ body {
   font-size: 1rem;
   font-weight: bold;
   color: blue;
-  /* background-color: rgb(5, 102, 26); */
   padding: 4px;
   margin-bottom: 4px;
   border-bottom-color: gray;
@@ -58,8 +41,10 @@ body {
 }
 
 .companyheading {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: bolder;
+  color: rgb(82, 82, 245);
+  /* background-color: ; */
 }
 
 .jobheading {

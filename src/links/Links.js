@@ -6,9 +6,9 @@ const Links = ({ links }) => {
   if (!links) return <div>loading {kWord}</div>;
   return (
     <div className="container">
-      <div className="row contactheading" key={[kWord, "title"].join("-")}>
+      {/* <div className="row contactheading" key={[kWord, "title"].join("-")}>
         {kWord}
-      </div>
+      </div> */}
       {links.map((link, idx) => (
         <Link idx={idx} link={link} key={[kWord, idx].join("-")} />
       ))}

@@ -1,5 +1,4 @@
 import React from "react";
-import "../Custom.css";
 
 const Skill = ({ skill, k }) => {
   let kWord = "Skill";
