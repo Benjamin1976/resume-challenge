@@ -334,8 +334,8 @@
       "company": "Hewlett Packard",
       "position": "Technical Support Team Lead",
       "title": "Technical Support",
-      "project": "",
-      "role": "Technical Support Team Lead",
+      "project": "In Hewlett Packard, my roles changed ending as a Technical Lead on three major accounts supporting a customer base of over 3000 employees and 50 sites throughout Australia.",
+      "role": "Technical Lead, Helpdesk Support, Duty Co-ordinator, User Administration",
       "achievements": "",
       "order": 18
     },
@@ -346,7 +346,7 @@
       "company": "MYOB Australia",
       "position": "Technical Support",
       "title": "Technical Support",
-      "project": "",
+      "project": "In Hewlett Packard, my roles changed ending as a Technical Lead on three major accounts supporting a customer base of over 3000 employees and 50 sites throughout Australia.",
       "role": "Technical Support",
       "achievements": "",
       "order": 19
@@ -380,6 +380,7 @@
       "end": "30-Mar-2001",
       "current": false,
       "company": "Optus Cable & Wireless",
+      "role": "Doing temporary work at Optus, I worked to automate order processing using MacOS.",
       "order": 101
     },
     {
@@ -387,6 +388,7 @@
       "end": "30-Dec-2000",
       "current": false,
       "company": "Computershare Registry",
+      "role": "As a Data Analyst, we processing mass data submission forms utilising OCR recognition.",
       "order": 102
     },
     {
@@ -394,6 +396,7 @@
       "end": "30-Nov-2000",
       "current": false,
       "company": "Institution of Engineers",
+      "role": "As a Client facing agent, I was undertaking event management for the upcoming Institute of Engineers company forum.",
       "order": 103
     },
     {
@@ -401,6 +404,7 @@
       "end": "30-Oct-2000",
       "current": false,
       "company": "Beasley's Teahouse & Nursery",
+      "role": "As a Customer service representative, I worked directly with customers to ensure a pleasant stay.",
       "order": 104
     },
     {
@@ -408,6 +412,7 @@
       "end": "30-Feb-1999",
       "current": false,
       "company": "Pacific Access",
+      "role": "I started as a Customer Consultant handling White Pages entries. Through extensive training I became an experienced and flexible member of the team.  Using my initiative I implemented mass processing and computer macros to improve productivity.  Recognising my computer knowledge, I was asked to participate in more involved projects such as Y2K testing and mass data manipulation.  After assisting with out-going calls to collect information for the new Yellow Pages Web Site, I was one of six selected to set up a role model office for other states to copy.  The duties involved loading numerous web page items onto the system.  I was also awarded Adecco's employee of the Month in May 1998.",
       "order": 105
     },
     {
@@ -415,6 +420,7 @@
       "end": "30-Feb-1998",
       "current": false,
       "company": "Woolworths t/a Safeway Supermarkets",
+      "role": "Starting as an Impact Manager, assessing the impact of consumables, I was quickly promoted to Night Store Manager, which involved running the store from 5pm, managing all aspects of Customer Service, Money handling and processing, Customer Complaints, Staff Management, Store Quality, Store Ordering / Re-stocking and all aspects of running a Grocery Store.",
       "order": 106
     },
     {
@@ -422,6 +428,7 @@
       "end": "30-Aug-1996",
       "current": false,
       "company": "Cafe India",
+      "role": "This was a short role by delivering Indian food around Melbourne's east suburbs.",
       "order": 107
     },
     {
@@ -429,6 +436,7 @@
       "end": "30-Oct-1995",
       "current": false,
       "company": "Julians Lodge, Falls Creek",
+      "role": "Fun, Fun, Fun!  What can I say ? Here my official job title  was waiter,  kitchenhand,  snow-shoveller, hydro-ceramic technician, room changer, fireplace setter... you name it I did it.  The lodge was quite small which provided close customer interaction.  I met some great people and had some amazing times.",
       "order": 108
     },
     {
@@ -436,6 +444,7 @@
       "end": "30-Jun-1994",
       "current": false,
       "company": "Mc Donalds Australia",
+      "role": "Starting at McDonalds early im my career, McDonalds really gave me my first glimpses of customer interaction and the running of a business.  I started with Front Counter Service, progressing to back of house, Crew Trainer then to stock handling and organising.  The Assistant Store Manager also taught me some basics of McDonalds management.",
       "order": 109
     },
     {
@@ -443,6 +452,7 @@
       "end": "30-Nov-1994",
       "current": false,
       "company": "CCC Toyota Salvage",
+      "role": "At the wrecking yard, I learned valuable skills pulling cars to bits and sometimes putting them back together correctly.  This was fun and messy work but a very enjoyable experience, giving me invaluable knowledge how to maintain and fix a car.  My job was to strip the parts off cars, organise stock and deliveries and deal with customers. I learnt a great deal of skills that I use to this day.",
       "order": 110
     }
   ],

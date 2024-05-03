@@ -8,7 +8,10 @@ const Certifications = ({ certs }) => {
 
   return (
     <div className="container">
-      <div className="row heading" key={[kWord, "row", "title"].join("-")}>
+      <div
+        className="row heading bg-primary text-white"
+        key={[kWord, "row", "title"].join("-")}
+      >
         <div
           id="certifications"
           className="col col-8"

@@ -6,11 +6,9 @@ const Job = ({ job, idx }) => {
   let k = idx;
 
   const formatDate = (date) => {
-    // let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     let theDate = new Date(date);
-    // let options = { year: "numeric", month: "long" };
     let theMonth = theDate.toLocaleString("default", { month: "long" });
-    let theYear = theDate.toLocaleString("default", { year: "numeric" });
+    let theYear = theDate.toLocaleString("default", { year: "2-digit" });
     return theMonth.substring(0, 3) + "-" + theYear;
   };
 

@@ -67,7 +67,10 @@ const SkillGroups = ({ skillgroups }) => {
 
   return (
     <div className="container">
-      <div className="row heading" key={[kWord, "row", "title"].join("-")}>
+      <div
+        className="row heading bg-primary text-white"
+        key={[kWord, "row", "title"].join("-")}
+      >
         <div
           id="skills"
           className="col col-8"

@@ -8,10 +8,12 @@ const Jobs = ({ jobs }) => {
   if (!jobs) return <div>loading {kWord}</div>;
 
   const jobsGrpd = Object.groupBy(jobs, ({ company }) => company);
-  //   console.log(jobsGrpd);
   return (
     <div className="container">
-      <div className="row heading" key={[kWord, "row", "title"].join("-")}>
+      <div
+        className="row heading bg-primary text-white"
+        key={[kWord, "row", "title"].join("-")}
+      >
         <div
           id="jobs"
           className="col col-8"
@@ -23,11 +25,6 @@ const Jobs = ({ jobs }) => {
           className="col col-4 text-end"
           key={[kWord, "col", "scrollTop"].join("-")}
         >
-          {/* <ShowHideButton
-            target={".jobs-collapse"}
-            controls={"jobsCollapseAll"}
-            collapse={"true"}
-          /> */}
           <ScrollTop />
         </div>
       </div>
