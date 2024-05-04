@@ -20,9 +20,4 @@ const ScrollTop = () => (
     </svg>
   </a>
 );
-// const ScrollTop = () => (
-//   <a className="text-white text-sm" href="#heading-top">
-//     Top
-//   </a>
-// );
 export default ScrollTop;

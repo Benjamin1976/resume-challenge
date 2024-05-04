@@ -13,7 +13,6 @@ const Contact = ({ contact, idx }) => {
 
   const { type, name, details } = contact;
   return (
-    // <div className="row contactrow" key={[k2, "row"].join("-")}>
     <div className="row" key={[k2, "row"].join("-")}>
       <div
         className="col col-xs-4 col-md-4"
@@ -28,7 +27,6 @@ const Contact = ({ contact, idx }) => {
         {details ? checkContactType(type, name, details) : ""}
       </div>
     </div>
-    // </div>
   );
 };
 

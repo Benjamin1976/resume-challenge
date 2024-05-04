@@ -1,5 +1,6 @@
 import React from "react";
 import Contact from "./Contact";
+// import Heading from "../common/Heading";
 
 const Contacts = ({ contacts }) => {
   let kWord = "Contacts";
@@ -10,8 +11,9 @@ const Contacts = ({ contacts }) => {
         className="row contactheading border-bottom text-float"
         key={[kWord, "title"].join("-")}
       >
-        {kWord}
+        <div className="col col-12">{kWord}</div>
       </div>
+      {/* <Heading kWord={kWord} /> */}
       {contacts.map((contact, idx) => (
         <Contact idx={idx} contact={contact} key={[kWord, idx].join("-")} />
       ))}

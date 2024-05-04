@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import About from "./About";
 import Heading from "../common/Heading";
 
@@ -8,7 +8,7 @@ const Abouts = ({ name, abouts, section }) => {
   const aboutsGrpd = Object.groupBy(abouts, ({ section }) => section);
 
   return (
-    <Fragment>
+    <div className="container">
       <Heading kWord={kWord} />
       <div className="row show collapseAll" id={`collapse${kWord}`}>
         <div className="col col-12">
@@ -24,7 +24,7 @@ const Abouts = ({ name, abouts, section }) => {
           })}
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 };
 

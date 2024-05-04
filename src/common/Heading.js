@@ -4,12 +4,13 @@ import ScrollTop from "./ScrollTop";
 const Heading = ({ kWord }) => {
   return (
     <div
+      id={kWord.toLowerCase()}
       className="row bg-primary heading"
       key={[kWord, "row", "title"].join("-")}
     >
       <div className="col col-8" key={[kWord, "col", "title"].join("-")}>
         <a
-          className="heading text-white"
+          className="text-white"
           data-bs-toggle="collapse"
           href={`#collapse${kWord}`}
           role="button"

@@ -21,8 +21,10 @@ const Certification = ({ cert, idx }) => {
         {course || ""}
       </div>
       <div className="col col-4 date" key={[k2, "col", "dates"].join("-")}>
-        {start ? formatDate(start) : ""}
-        {end ? " - " + formatDate(end) : ""}
+        <span className="float-end">
+          {start ? formatDate(start) : ""}
+          {end ? " - " + formatDate(end) : ""}
+        </span>
       </div>
     </div>
   );

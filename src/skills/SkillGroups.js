@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import SkillGroup from "./SkillGroup";
 import Heading from "../common/Heading";
 
@@ -6,30 +6,27 @@ const SkillGroups = ({ skillgroups }) => {
   let kWord = "Skills";
   if (!skillgroups) return <div>loading {kWord}</div>;
 
-  const skillList = (skillgroup, i) => (
-    <Fragment>
-      <div className="row" key={[kWord, "row", "group-hdr", i].join("-")}>
+  const skillList = (skillgroup, i) => {
+    const sections = [
+      skillgroup.title,
+      <SkillGroup
+        idx={i}
+        skillGrp={skillgroup[i]}
+        key={[kWord, i].join("-")}
+      />,
+    ];
+
+    return sections.map((section, idx) => (
+      <div className="row" key={[kWord, "row", "group-hdr", i, idx].join("-")}>
         <div
           className="col col-12"
           key={[kWord, "col", "group-hdr", i].join("-")}
         >
-          {skillgroup.title}
+          {section}
         </div>
       </div>
-      <div className="row" key={[kWord, "row", "group-detail", i].join("-")}>
-        <div
-          className="col col-12"
-          key={[kWord, "col", "group-detail", i].join("-")}
-        >
-          <SkillGroup
-            idx={i}
-            skillGrp={skillgroup[i]}
-            key={[kWord, i].join("-")}
-          />
-        </div>
-      </div>
-    </Fragment>
-  );
+    ));
+  };
 
   const skillGroup = (skillgroup, i) => (
     <div
@@ -37,27 +34,23 @@ const SkillGroups = ({ skillgroups }) => {
       id={`collapse${kWord}`}
       key={[kWord, "row", "skillsgroup", i].join("-")}
     >
-      <div
-        className="col col-6"
-        key={[kWord, "col", "skillsgroup", i].join("-")}
-      >
-        {skillList(skillgroup, i)}
-      </div>
-      <div
-        className="col col-6"
-        key={[kWord, "col", "skillsgroup", i + 1].join("-")}
-      >
-        {skillList(skillgroup, i + 1)}
-      </div>
+      {[0, 1].map((arrIndex) => (
+        <div
+          className="col col-6"
+          key={[kWord, "col", "skillsgroup", i + arrIndex].join("-")}
+        >
+          {skillList(skillgroup, i + arrIndex)}
+        </div>
+      ))}
     </div>
   );
 
   return (
-    <Fragment>
+    <div className="container">
       <Heading kWord={kWord} />
       {skillGroup(skillgroups, 0)}
       {skillGroup(skillgroups, 2)}
-    </Fragment>
+    </div>
   );
 };
 

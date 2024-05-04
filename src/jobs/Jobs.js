@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Job from "./Job";
 import Heading from "../common/Heading";
 
@@ -8,7 +8,7 @@ const Jobs = ({ jobs }) => {
 
   const jobsGrpd = Object.groupBy(jobs, ({ company }) => company);
   return (
-    <Fragment>
+    <div className="container">
       <Heading kWord={kWord} />
       {Object.keys(jobsGrpd).map((company, idx) => {
         let k2 = [kWord, idx].join("-");
@@ -38,7 +38,7 @@ const Jobs = ({ jobs }) => {
           </div>
         );
       })}
-    </Fragment>
+    </div>
   );
 };
 
