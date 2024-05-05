@@ -1,3 +1,7 @@
+# Links used in docker setup
+
+https://mentorcruise.com/blog/how-to-dockerize-a-react-app-and-deploy-it-easily/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
