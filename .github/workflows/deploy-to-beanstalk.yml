@@ -17,16 +17,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       #ZIP file for Beanstalk
-      - name: Zip Folder
-        run: |
-          zip -r ../${{ env.ZIP_DIR }}/${{ env.ZIP_FILE }} . -x ".git/*" ".github/*" "build"
-        working-directory: react-resume
+      # - name: Zip Folder
+      #   run: |
+      #     zip -r ../${{ env.ZIP_DIR }}/${{ env.ZIP_FILE }} . -x ".git/*" ".github/*" "build"
+      #   working-directory: react-resume
 
-        # cd ../ # I added this
-        # rm -rf <repository_name>.zip
-        # zip -r ../<repository_name>.zip <repository_name> -x ".git/*" ".github/*" "build"
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          filename: "../${{ env.ZIP_DIR }}/${{ env.ZIP_FILE }}"
+          exclusions: ".git/* .github/* build"
+          path: react-resume
 
-        # Deploy to the S3 server
+      # cd ../ # I added this
+      # rm -rf <repository_name>.zip
+      # zip -r ../<repository_name>.zip <repository_name> -x ".git/*" ".github/*" "build"
+
+      # Deploy to the S3 server
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@master
         with:
@@ -39,6 +46,7 @@ jobs:
           SOURCE_DIR: ${{ env.ZIP_DIR }}
   deploy-sam-template:
     runs-on: ubuntu-latest
+    needs: zip-and-deploy-to-s3
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
