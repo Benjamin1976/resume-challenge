@@ -22,6 +22,15 @@ jobs:
       #     zip -r ../${{ env.ZIP_DIR }}/${{ env.ZIP_FILE }} . -x ".git/*" ".github/*" "build"
       #   working-directory: react-resume
 
+      - name: Find Folder
+        run: |
+          ls react-resume
+          ls react-resume/
+          ls ./react-resume
+          ls ./react-resume/
+          ls ../react-resume
+          ls ../react-resume/
+
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
