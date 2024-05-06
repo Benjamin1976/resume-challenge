@@ -27,7 +27,7 @@ jobs:
         with:
           filename: "../${{ env.ZIP_DIR }}/${{ env.ZIP_FILE }}"
           exclusions: ".git/* .github/* build"
-          path: "./react-resume/."
+          path: "./react-resume"
 
       # cd ../ # I added this
       # rm -rf <repository_name>.zip
