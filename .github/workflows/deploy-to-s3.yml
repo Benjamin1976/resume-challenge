@@ -31,14 +31,14 @@ jobs:
       - name: Install packages
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
-          npm run install
+          npm install
 
       # Build an optimized production build
       - name: Production build
         working-directory: ${{ env.WORKING_DIRECTORY }}
         run: |
           unset CI
-          npm  build
+          npm run build
 
       # Deploy to the S3 server
       - name: Deploy to S3

@@ -26,14 +26,14 @@ jobs:
 
       - name: Find Folder
         run: |
-          ls $GITHUB_WORKSPACE
+          ls $GITHUB_WORKSPACE/react-resume
 
       - name: Archive Release
         uses: thedoctor0/zip-release@master
         with:
           filename: "../${{ env.ZIP_DIR }}/${{ env.ZIP_FILE }}"
           exclusions: ".git/* .github/* build"
-          path: "$GITHUB_WORKSPACE/react-resume"
+          path: $GITHUB_WORKSPACE/react-resume/.
 
       # cd ../ # I added this
       # rm -rf <repository_name>.zip
