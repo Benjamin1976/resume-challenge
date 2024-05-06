@@ -30,22 +30,22 @@ jobs:
 
       - name: Find Zip
         run: |
-          ls '$GITHUB_WORKSPACE/${{ env.ZIP_DIR }}'
-
-      - name: Find Zip
-        run: |
           ls $GITHUB_WORKSPACE/react-resume
 
       - name: Find Zip
         run: |
           ls $GITHUB_WORKSPACE
 
-      # - name: Zip file
-      #   run: |
+      - name: Find Zip
+        run: |
+          ls $GITHUB_WORKSPACE/react-resume-zip
 
-      #     zip -r ${{ env.ZIP_FILE }}.zip $GITHUB_WORKSPACE/react-resume/.
-      # - name: Archive Release
-      #   uses: thedoctor0/zip-release@master
+              # - name: Zip file
+          #   run: |
+
+          #     zip -r ${{ env.ZIP_FILE }}.zip $GITHUB_WORKSPACE/react-resume/.
+          # - name: Archive Release
+          #   uses: thedoctor0/zip-release@master
       #   with:
       #     filename: "../${{ env.ZIP_DIR }}/${{ env.ZIP_FILE }}"
       #     exclusions: ".git/* .github/* build"
