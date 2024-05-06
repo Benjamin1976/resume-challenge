@@ -1,4 +1,4 @@
-name: Deploy RC infra to AWS
+name: Deploy RC infra to AWS Beanstalk
 
 on:
   push:
@@ -28,9 +28,13 @@ jobs:
           files: react-resume/
           dest: result.zip
 
-      - name: Find Folder
+      - name: Find Zip
         run: |
           ls $GITHUB_WORKSPACE/react-resume
+
+      - name: Find Zip
+        run: |
+          ls $GITHUB_WORKSPACE
 
       # - name: Zip file
       #   run: |
