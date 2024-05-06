@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Resume Challenge Stack
+
+  Create S3 Bucket
+
+Parameters:
+  s3BucketName:
+    Type: "String"
+    Default: resume-challenge-zip
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref s3BucketName
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: False
+        BlockPublicPolicy: False
+        IgnorePublicAcls: False
+        RestrictPublicBuckets: False
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
+      Tags:
+        - Key: "application"
+          Value: "resume challenge"
+
+Outputs:
+  S3BucketArn:
+    Value: !GetAtt S3Bucket.Arn
+    Description: Arn for the new bucket
+  S3BucketName:
+    Value: !Ref s3BucketName
+    Description: Bucket Name for the new bucket

@@ -6,6 +6,7 @@ on:
 
 env:
   WORKING_DIRECTORY: react-resume
+  AWS_S3_BUCKET: bens-resume-challenge-001
 
 jobs:
   build:
@@ -46,7 +47,7 @@ jobs:
         with:
           args: --acl public-read --delete
         env:
-          AWS_S3_BUCKET: bens-resume-challenge-benjamin1976
+          AWS_S3_BUCKET: ${{ env.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}

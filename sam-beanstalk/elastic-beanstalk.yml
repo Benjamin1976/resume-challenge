@@ -50,79 +50,18 @@ Parameters:
     Type: "String"
     Default: NVirginia-KP1
 
+  MyDomainName:
+    Type: "String"
+    Default: imaginators.cloud
+  HostedZoneId:
+    Type: "String"
+    Default: Z02979041LRIL8T1P1W8K
+
 Resources:
   BeanstalkApplication:
     Type: AWS::ElasticBeanstalk::Application
     Properties:
       ApplicationName: !Ref ApplicationName
-
-  # BeanstalkConfig:
-  #   Type: AWS::ElasticBeanstalk::ConfigurationTemplate
-  #   Properties:
-  #     ApplicationName: !Ref ApplicationName
-  #     Description: !Ref Description
-  #     EnvironmentId: ""
-  #     SolutionStackName: !Ref SolutionStackName
-  #     OptionSettings:
-  #       - Namespace: aws:ec2:vpc
-  #         OptionName: VPCId
-  #         Value: vpc-095983451f8f88b29
-  #       - Namespace: aws:ec2:vpc
-  #         OptionName: Subnets
-  #         Value: subnet-00876401cd9cfd73f,subnet-04f2df539c51fcf5d
-  #       - Namespace: aws:ec2:vpc
-  #         OptionName: AssociatePublicIpAddress
-  #         Value: true
-
-  #       - Namespace: aws:elasticbeanstalk:monitoring
-  #         OptionName: Automatically Terminate Unhealthy Instances
-  #         Value: true
-
-  #       - Namespace: aws:elasticbeanstalk:healthreporting:system
-  #         OptionName: SystemType
-  #         Value: enhanced
-  #       - Namespace: aws:elasticbeanstalk:healthreporting:system
-  #         OptionName: EnhancedHealthAuthEnabled
-  #         Value: true
-  #       - Namespace: aws:elasticbeanstalk:healthreporting:system
-  #         OptionName: ConfigDocument
-  #         Value: "{\n  \"Rules\": {\n    \"Environment\": {\n      \"Application\": {\n        \"ApplicationRequests4xx\": {\n          \"Enabled\": false\n        }\n      },\n      \"ELB\": {\n        \"ELBRequests4xx\": {\n          \"Enabled\": true\n        }\n      }\n    }\n  },\n  \"Version\": 1\n}"
-  #         # Value: ./healthreporting-rules.json
-
-  #       - Namespace: aws:elasticbeanstalk:managedactions
-  #         OptionName: ManagedActionsEnabled
-  #         Value: false
-
-  #       - Namespace: aws:elasticbeanstalk:environment
-  #         OptionName: EnvironmentType
-  #         Value: SingleInstance
-  #       - Namespace: aws:elasticbeanstalk:environment
-  #         OptionName: ServiceRole
-  #         Value: !Ref ServiceRole
-
-  #       - Namespace: aws:autoscaling:launchconfiguration
-  #         OptionName: IamInstanceProfile
-  #         Value: !Ref IamInstanceProfile
-  #       - Namespace: aws:autoscaling:launchconfiguration
-  #         OptionName: EC2KeyName
-  #         Value: NVirginia-KP1
-  #       - Namespace: aws:autoscaling:launchconfiguration
-  #         OptionName: InstanceType
-  #         Value: t3.micro
-  #       - Namespace: aws:autoscaling:launchconfiguration
-  #         OptionName: SecurityGroups
-  #         Value: sg-0defaece070494a92
-  #       - Namespace: aws:elasticbeanstalk:application
-  #         OptionName: Application Healthcheck URL
-  #         Value: /index.html
-  #       - Namespace: aws:ec2:instances
-  #         OptionName: InstanceTypes
-  #         Value: t3.micro
-  #       - Namespace: aws:ec2:instances
-  #         OptionName: EnableSpot
-  #         Value: false
-  #   DependsOn:
-  #     - BeanstalkApplication
 
   BeanstalkEnv:
     Type: AWS::ElasticBeanstalk::Environment
@@ -211,3 +150,14 @@ Resources:
         S3Bucket: !Ref S3Bucket
         S3Key: !Ref S3Key
     DependsOn: [BeanstalkApplication]
+
+  CNameEntry:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Comment: Test
+      HostedZoneId: !Ref HostedZoneId
+      Name: !Sub "${CNamePrefix}.${MyDomainName}"
+      AliasTarget:
+        HostedZoneId: Z2FDTNDATAQYW2
+        DNSName: !GetAtt BeanstalkEnv.EndpointURL
+      Type: A

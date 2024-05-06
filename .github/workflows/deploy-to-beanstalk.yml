@@ -6,15 +6,48 @@ on:
       - main
 
 env:
-  STACK_NAME: benjamins-resume-challenge-beanstalk
+  S3_STACK_NAME: resume-challenge-beanstalk-s3
+  STACK_NAME: resume-challenge-beanstalk
   AWS_REGION: us-east-1
-  ZIP_BUCKET: bens-resume-challenge-benjamin1976-zip
+  ZIP_BUCKET: resume-challenge-zip
   ZIP_DIR: react-resume-zip
   ZIP_FILE: resume-challenge.zip
 
 jobs:
+  create-s3-zip-bucket:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Installing a version of Python or PyPy and (by default) adding it to the PATH
+      # Action to set up AWS SAM CLI and add it to the PATH
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+      - uses: aws-actions/setup-sam@v1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      # Sets up AWS credentials to process the build
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      # Deploys the stack to AWS Cloudformation
+      # --stack-name ${{ env.STACK_NAME }} --s3-bucket ${{ env.ZIP_BUCKET }} \
+      - name: Create s3 bucket for Beanstalk zip
+        run: |
+          sam deploy -t s3-create.yml \
+            --stack-name ${{ env.S3_STACK_NAME }} \
+            --region ${{ env.AWS_REGION }} \
+            --role-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.AWS_GITHUB_ROLE }} \
+            --no-confirm-changeset --no-fail-on-empty-changeset \
+            --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND
+        working-directory: sam-beanstalk
   zip-and-deploy-to-s3:
     runs-on: ubuntu-latest
+    needs: create-s3-zip-bucket
     steps:
       # ZIP file for Beanstalk
       - uses: actions/checkout@v2
@@ -38,6 +71,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           SOURCE_DIR: $GITHUB_WORKSPACE/react-resume-zip
+
   deploy-sam-template:
     runs-on: ubuntu-latest
     needs: zip-and-deploy-to-s3
@@ -66,10 +100,13 @@ jobs:
       # - run: sam build --use-container
       # Run Unit tests- Specify unit tests here
       # Deploys the stack to AWS Cloudformation
+      # --stack-name ${{ env.STACK_NAME }} --s3-bucket ${{ env.ZIP_BUCKET }} \
       - name: Deploy SAM template
         run: |
-          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset \
-            --stack-name ${{ env.STACK_NAME }} --s3-bucket ${{ env.ZIP_BUCKET }} \
-            --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
-            --region ${{ env.AWS_REGION }}  --role-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.AWS_GITHUB_ROLE }}
+          sam deploy -t s3-create.yml \
+            --stack-name ${{ env.STACK_NAME }} \
+            --region ${{ env.AWS_REGION }} \
+            --role-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.AWS_GITHUB_ROLE }} \
+            --no-confirm-changeset --no-fail-on-empty-changeset \
+            --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND
         working-directory: sam-beanstalk

@@ -29,10 +29,10 @@ Parameters:
     Default: 64bit Amazon Linux 2023 v6.1.4 running Node.js 20
   S3Bucket:
     Type: String
-    Default: elasticbeanstalk-us-east-1-656129116436
+    Default: bens-resume-challenge-benjamin1976-zip
   S3Key:
     Type: String
-    Default: 1714966823624-resume-challenge-react-v1.13.zip
+    Default: resume-challenge.zip
   SecurityGroup:
     Type: String
     Default: sg-08ab1849e01ab1316
@@ -45,6 +45,12 @@ Parameters:
   KeyPairName:
     Type: String
     Default: NVirginia-KP1
+  MyDomainName:
+    Type: String
+    Default: imaginators.cloud
+  HostedZoneId:
+    Type: String
+    Default: Z02979041LRIL8T1P1W8K
 Resources:
   BeanstalkApplication:
     Type: AWS::ElasticBeanstalk::Application
@@ -150,3 +156,18 @@ Resources:
           Ref: S3Key
     DependsOn:
     - BeanstalkApplication
+  CNameEntry:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Comment: Test
+      HostedZoneId:
+        Ref: HostedZoneId
+      Name:
+        Fn::Sub: ${CNamePrefix}.${MyDomainName}
+      AliasTarget:
+        HostedZoneId: Z2FDTNDATAQYW2
+        DNSName:
+          Fn::GetAtt:
+          - BeanstalkEnv
+          - EndpointURL
+      Type: A
