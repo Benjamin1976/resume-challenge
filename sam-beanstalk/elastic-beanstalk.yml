@@ -30,7 +30,7 @@ Parameters:
     Default: "64bit Amazon Linux 2023 v6.1.4 running Node.js 20"
   S3Bucket:
     Type: "String"
-    Default: bens-resume-challenge-benjamin1976-zip
+    Default: resume-challenge-zip
     # Default: elasticbeanstalk-us-east-1-656129116436
   S3Key:
     Type: "String"
