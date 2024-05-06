@@ -1,0 +1,1 @@
+"{\n  \"Rules\": {\n    \"Environment\": {\n      \"Application\": {\n        \"ApplicationRequests4xx\": {\n          \"Enabled\": false\n        }\n      },\n      \"ELB\": {\n        \"ELBRequests4xx\": {\n          \"Enabled\": true\n        }\n      }\n    }\n  },\n  \"Version\": 1\n}"

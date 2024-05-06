@@ -1,0 +1,152 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'resume challenge resources
+
+  SAM Template for resume challenge resourcess
+
+  '
+Parameters:
+  ApplicationName:
+    Type: String
+    Default: bens-resume-challenge-beanstalk
+  Description:
+    Type: String
+    Default: Beanstalk for bens-resume-challenge
+  CNamePrefix:
+    Type: String
+    Default: bens-resume-bs
+  ServiceRole:
+    Type: String
+    Default: arn:aws:iam::656129116436:role/service-role/aws-elasticbeanstalk-service-role
+  OperationsRole:
+    Type: String
+    Default: arn:aws:iam::656129116436:role/ElasticBeanstalkSAMRole
+  IamInstanceProfile:
+    Type: String
+    Default: arn:aws:iam::656129116436:instance-profile/ElasticBeanstalkEC2Role
+  SolutionStackName:
+    Type: String
+    Default: 64bit Amazon Linux 2023 v6.1.4 running Node.js 20
+  S3Bucket:
+    Type: String
+    Default: elasticbeanstalk-us-east-1-656129116436
+  S3Key:
+    Type: String
+    Default: 1714966823624-resume-challenge-react-v1.13.zip
+  SecurityGroup:
+    Type: String
+    Default: sg-08ab1849e01ab1316
+  VPCId:
+    Type: String
+    Default: vpc-095983451f8f88b29
+  SubnetIds:
+    Type: String
+    Default: subnet-00876401cd9cfd73f,subnet-04f2df539c51fcf5d
+  KeyPairName:
+    Type: String
+    Default: NVirginia-KP1
+Resources:
+  BeanstalkApplication:
+    Type: AWS::ElasticBeanstalk::Application
+    Properties:
+      ApplicationName:
+        Ref: ApplicationName
+  BeanstalkEnv:
+    Type: AWS::ElasticBeanstalk::Environment
+    Properties:
+      ApplicationName:
+        Ref: ApplicationName
+      CNAMEPrefix:
+        Ref: CNamePrefix
+      Description:
+        Ref: Description
+      EnvironmentName:
+        Fn::Sub: ${ApplicationName}-prod-env
+      OperationsRole:
+        Ref: OperationsRole
+      OptionSettings:
+      - Namespace: aws:ec2:vpc
+        OptionName: VPCId
+        Value:
+          Ref: VPCId
+      - Namespace: aws:ec2:vpc
+        OptionName: Subnets
+        Value:
+          Ref: SubnetIds
+      - Namespace: aws:ec2:vpc
+        OptionName: AssociatePublicIpAddress
+        Value: true
+      - Namespace: aws:elasticbeanstalk:monitoring
+        OptionName: Automatically Terminate Unhealthy Instances
+        Value: true
+      - Namespace: aws:elasticbeanstalk:healthreporting:system
+        OptionName: SystemType
+        Value: enhanced
+      - Namespace: aws:elasticbeanstalk:healthreporting:system
+        OptionName: EnhancedHealthAuthEnabled
+        Value: true
+      - Namespace: aws:elasticbeanstalk:healthreporting:system
+        OptionName: ConfigDocument
+        Value: "{\n  \"Rules\": {\n    \"Environment\": {\n      \"Application\":\
+          \ {\n        \"ApplicationRequests4xx\": {\n          \"Enabled\": false\n\
+          \        }\n      },\n      \"ELB\": {\n        \"ELBRequests4xx\": {\n\
+          \          \"Enabled\": true\n        }\n      }\n    }\n  },\n  \"Version\"\
+          : 1\n}"
+      - Namespace: aws:elasticbeanstalk:managedactions
+        OptionName: ManagedActionsEnabled
+        Value: false
+      - Namespace: aws:elasticbeanstalk:environment
+        OptionName: EnvironmentType
+        Value: SingleInstance
+      - Namespace: aws:elasticbeanstalk:environment
+        OptionName: ServiceRole
+        Value:
+          Ref: ServiceRole
+      - Namespace: aws:autoscaling:launchconfiguration
+        OptionName: IamInstanceProfile
+        Value:
+          Ref: IamInstanceProfile
+      - Namespace: aws:autoscaling:launchconfiguration
+        OptionName: EC2KeyName
+        Value:
+          Ref: KeyPairName
+      - Namespace: aws:autoscaling:launchconfiguration
+        OptionName: InstanceType
+        Value: t3.micro
+      - Namespace: aws:autoscaling:launchconfiguration
+        OptionName: SecurityGroups
+        Value:
+          Ref: SecurityGroup
+      - Namespace: aws:autoscaling:launchconfiguration
+        OptionName: SecurityGroups
+        Value:
+          Ref: SecurityGroup
+      - Namespace: aws:ec2:instances
+        OptionName: InstanceTypes
+        Value: t3.micro
+      - Namespace: aws:ec2:instances
+        OptionName: EnableSpot
+        Value: false
+      SolutionStackName:
+        Ref: SolutionStackName
+      Tier:
+        Name: WebServer
+        Type: Standard
+      VersionLabel:
+        Ref: BeanstalkVersion
+    DependsOn:
+    - BeanstalkApplication
+  BeanstalkVersion:
+    Type: AWS::ElasticBeanstalk::ApplicationVersion
+    Properties:
+      ApplicationName:
+        Ref: ApplicationName
+      Description:
+        Ref: Description
+      SourceBundle:
+        S3Bucket:
+          Ref: S3Bucket
+        S3Key:
+          Ref: S3Key
+    DependsOn:
+    - BeanstalkApplication

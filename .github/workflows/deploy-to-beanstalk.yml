@@ -1,0 +1,73 @@
+name: Deploy RC infra to AWS
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  STACK_NAME: benjamins-resume-challenge-beanstalk
+  AWS_REGION: us-east-1
+  ZIP_BUCKET: bens-resume-challenge-benjamin1976-zip
+  ZIP_DIR: react-resume-zip
+  ZIP_FILE: resume-challenge.zip
+
+jobs:
+  zip-and-deploy-to-s3:
+    runs-on: ubuntu-latest
+    steps:
+      #ZIP file for Beanstalk
+      - name: Zip Folder
+        run: |
+          zip -r ../${{ env.ZIP_DIR }}/${{ env.ZIP_FILE }} . -x ".git/*" ".github/*" "build"
+        working-directory: react-resume
+
+        # cd ../ # I added this
+        # rm -rf <repository_name>.zip
+        # zip -r ../<repository_name>.zip <repository_name> -x ".git/*" ".github/*" "build"
+
+        # Deploy to the S3 server
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --delete
+        env:
+          AWS_S3_BUCKET: ${{ env.ZIP_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          SOURCE_DIR: ${{ env.ZIP_DIR }}
+  deploy-sam-template:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      # Installing a version of Python or PyPy and (by default) adding it to the PATH
+      - uses: actions/setup-python@v2
+
+      # Action to set up AWS SAM CLI and add it to the PATH
+      - uses: aws-actions/setup-sam@v1
+
+      # Installing a version of Python or PyPy and (by default) adding it to the PATH
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.9"
+
+      # Sets up AWS credentials to process the build
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+          # sam build
+      # - run: sam build --use-container
+      # Run Unit tests- Specify unit tests here
+      # Deploys the stack to AWS Cloudformation
+      - name: Deploy SAM template
+        run: |
+          sam deploy --no-confirm-changeset --no-fail-on-empty-changeset \
+            --stack-name ${{ env.STACK_NAME }} --s3-bucket ${{ env.ZIP_BUCKET }} \
+            --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM CAPABILITY_AUTO_EXPAND \
+            --region ${{ env.AWS_REGION }}  --role-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.AWS_GITHUB_ROLE }}
+        working-directory: sam-beanstalk

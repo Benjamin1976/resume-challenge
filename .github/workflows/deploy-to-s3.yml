@@ -1,4 +1,4 @@
-name: Deploy to Amazon s3 v3
+name: Deploy build folder to Amazon s3
 
 on:
   push:
@@ -41,8 +41,6 @@ jobs:
         with:
           args: --acl public-read --delete
         env:
-          # AWS_S3_BUCKET: ${{ secrets.AWS_PRODUCTION_BUCKET_NAME }}
-          # AWS_S3_BUCKET: s3://bens-resume-challenge-brc780/
           AWS_S3_BUCKET: bens-resume-challenge-benjamin1976
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
