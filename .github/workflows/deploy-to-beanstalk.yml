@@ -24,12 +24,7 @@ jobs:
 
       - name: Find Folder
         run: |
-          ls react-resume
-          ls react-resume/
-          ls ./react-resume
-          ls ./react-resume/
-          ls ../react-resume
-          ls ../react-resume/
+          ls
 
       - name: Archive Release
         uses: thedoctor0/zip-release@master
