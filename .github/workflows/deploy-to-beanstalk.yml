@@ -103,7 +103,7 @@ jobs:
       # --stack-name ${{ env.STACK_NAME }} --s3-bucket ${{ env.ZIP_BUCKET }} \
       - name: Deploy SAM template
         run: |
-          sam deploy -t s3-create.yml \
+          sam deploy -t elastic-beanstalk.yml \
             --stack-name ${{ env.STACK_NAME }} \
             --region ${{ env.AWS_REGION }} \
             --role-arn arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/${{ secrets.AWS_GITHUB_ROLE }} \
