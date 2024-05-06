@@ -26,7 +26,11 @@ jobs:
       - uses: vimtor/action-zip@v1.2
         with:
           files: react-resume/
-          dest: result.zip
+          dest: "${{ env.ZIP_DIR }}/${{ env.ZIP_FILE }}"
+
+      - name: Find Zip
+        run: |
+          ls '$GITHUB_WORKSPACE/${{ env.ZIP_DIR }}'
 
       - name: Find Zip
         run: |
