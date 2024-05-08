@@ -151,13 +151,23 @@ Resources:
         S3Key: !Ref S3Key
     DependsOn: [BeanstalkApplication]
 
+  # IP Entry - use for beanstalk if single instance
   CNameEntry:
     Type: AWS::Route53::RecordSet
     Properties:
       Comment: Test
       HostedZoneId: !Ref HostedZoneId
       Name: !Sub "${CNamePrefix}.${MyDomainName}"
-      AliasTarget:
-        HostedZoneId: Z2FDTNDATAQYW2
-        DNSName: !GetAtt BeanstalkEnv.EndpointURL
+      ResourceRecords: !GetAtt BeanstalkEnv.EndpointURL
       Type: A
+  # Domain name Entry - use for beanstalk if load balanced
+  # CNameEntry:
+  #   Type: AWS::Route53::RecordSet
+  #   Properties:
+  #     Comment: Test
+  #     HostedZoneId: !Ref HostedZoneId
+  #     Name: !Sub "${CNamePrefix}.${MyDomainName}"
+  #     AliasTarget:
+  #       HostedZoneId: Z2FDTNDATAQYW2
+  #       DNSName: !GetAtt BeanstalkEnv.EndpointURL
+  #     Type: A
