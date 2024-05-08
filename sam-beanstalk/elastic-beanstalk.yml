@@ -158,7 +158,7 @@ Resources:
       Comment: Test
       HostedZoneId: !Ref HostedZoneId
       Name: !Sub "${CNamePrefix}.${MyDomainName}"
-      ResourceRecords: !GetAtt BeanstalkEnv.EndpointURL
+      ResourceRecords: !Sub '{BeanstalkEnv.EndpointURL}'
       Type: A
   # Domain name Entry - use for beanstalk if load balanced
   # CNameEntry:
