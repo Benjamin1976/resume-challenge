@@ -17,7 +17,7 @@ const Heading = ({ kWord }) => {
           aria-expanded="true"
           aria-controls={`collapse${kWord}`}
         >
-          {kWord} <h1>Used different folder</h1>
+          {kWord}
         </a>
       </div>
       <div
