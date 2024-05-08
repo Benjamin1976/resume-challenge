@@ -5,9 +5,18 @@
 /.pnp
 .pnp.js
 
+# ---docker
+.doc*
+doc*
+nginx*
+
 /website-templates
 /docker-setup
 /archive
+/orig-react
+
+.env
+.env2
 
 # testing
 /coverage
