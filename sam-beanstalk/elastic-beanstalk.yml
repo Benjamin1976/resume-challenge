@@ -159,7 +159,7 @@ Resources:
       HostedZoneId: !Ref HostedZoneId
       Name: !Sub "${CNamePrefix}.${MyDomainName}"
       ResourceRecords: 
-      - !Sub '{BeanstalkEnv.Outputs.EndpointURL}'
+      - !Sub '{BeanstalkEnv.EndpointURL}'
       Type: A
       TTL: 900
   # Domain name Entry - use for beanstalk if load balanced
