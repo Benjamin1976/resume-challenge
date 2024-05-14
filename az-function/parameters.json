@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "e6b6061f-82c7-4d16-8f89-3427a6fe8ff2"
+        },
+        "name": {
+            "value": "bens-resume-challenge"
+        },
+        "location": {
+            "value": "East US"
+        },
+        "ftpsState": {
+            "value": "FtpsOnly"
+        },
+        "storageAccountName": {
+            "value": "resumechallenge8b2f"
+        },
+        "sku": {
+            "value": "Dynamic"
+        },
+        "skuCode": {
+            "value": "Y1"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "workerSizeId": {
+            "value": "0"
+        },
+        "numberOfWorkers": {
+            "value": "1"
+        },
+        "use32BitWorkerProcess": {
+            "value": false
+        },
+        "linuxFxVersion": {
+            "value": "Python|3.11"
+        },
+        "hostingPlanName": {
+            "value": "ASP-resumechallenge-845b"
+        },
+        "serverFarmResourceGroup": {
+            "value": "resume-challenge"
+        },
+        "alwaysOn": {
+            "value": false
+        }
+    }
+}
