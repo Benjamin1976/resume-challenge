@@ -8,6 +8,7 @@ const NavBar = () => {
     { title: "Certifications", ref: "#certifications" },
     { title: "Education", ref: "#education" },
     { title: "Blog", ref: "blog" },
+    // { title: "Build", ref: "build" },
   ];
   return (
     <nav className="navbar navbar-sm navbar-expand-md navbar-dark bg-primary">
@@ -35,21 +36,6 @@ const NavBar = () => {
                 {link.title}
               </a>
             ))}
-            {/* <a className="nav-link" href="/#skills">
-              Skills
-            </a>
-            <a className="nav-link" href="/#jobs">
-              Jobs
-            </a>
-            <a className="nav-link" href="/#certifications">
-              Certifications
-            </a>
-            <a className="nav-link" href="/#education">
-              Education
-            </a>
-            <a className="nav-link" href="/blog">
-              Blog
-            </a> */}
           </div>
         </div>
       </div>

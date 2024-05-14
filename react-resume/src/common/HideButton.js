@@ -13,7 +13,7 @@ const HideButton = () => {
       aria-controls={`collapseAbout collapseSkills collapseJobs collapseCertifications  collapseEducation`}
       onClick={() => setCollapse(!collapse)}
     >
-      {collapse ? "Show" : "Hide"} All
+      {collapse ? "Toggle" : "Toggle"} Sections
     </button>
   );
 };

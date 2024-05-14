@@ -4,7 +4,6 @@ import SkillGroups from "./skills/SkillGroups";
 import Certifications from "./certifications/Certifications";
 import Abouts from "./about/Abouts";
 import Contacts from "./contacts/Contacts";
-// import "./custom.css";
 
 const abouts = resume.about;
 const contacts = resume.contacts;
