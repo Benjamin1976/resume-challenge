@@ -18,13 +18,10 @@ const About = ({ aboutTitle, aboutGrp, idx }) => {
         <div className="col col-8" key={[kWord, k, "col", "title"].join("-")}>
           {aboutTitle || ""}
         </div>
-        <div className="col col-4" key={[kWord, k, "col", "button"].join("-")}>
-          {/* <ShowHideButton
-            target={`#aboutCollapse-${idx}`}
-            controls={`aboutCollapse-${idx}`}
-            collapse={"true"}
-          /> */}
-        </div>
+        <div
+          className="col col-4"
+          key={[kWord, k, "col", "button"].join("-")}
+        ></div>
       </div>
       {aboutGrp.map((about, aIdx) => {
         const { text } = about;
@@ -32,7 +29,7 @@ const About = ({ aboutTitle, aboutGrp, idx }) => {
 
         return (
           <div
-            className="row bg-white m-1 pd-2"
+            className="row bg-white m-2 pd-2"
             key={[k2, "row", "section"].join("-")}
           >
             <div

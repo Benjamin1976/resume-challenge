@@ -34,6 +34,14 @@ const Jobs = ({ jobs }) => {
                   />
                 </div>
               </div>
+              <div className="row" key={[k2, "row", 1].join("-")}>
+                <div
+                  className="col col-12 m-0 p-0"
+                  key={[k2, "col", 11].join("-")}
+                >
+                  <hr></hr>
+                </div>
+              </div>
             </div>
           </div>
         );

@@ -15,55 +15,40 @@
   ],
   "about": [
     {
-      "section": "ABOUT BENJAMIN",
-      "text": "As an IT professional for over 20 years, I have gained vast experience across a number of different IT functions including Program & Project Management, Incident Management and Application Support.  Over the past 14 years, I have been focused on Project Delivery as a Project Manager, then Scrum Master and currently a Platform Lead / Program Manager.",
+      "section": "Brief",
+      "text": "As an IT professional for over 20 years, I have gained experience across a number of different IT functions including Program & Project Management, Incident Management and Application Support. Over the past 14 years, I have been focused on Project Delivery as a Project Manager, then Scrum Master and currently a Platform Lead / Program Manager.",
       "order": 0
     },
     {
-      "section": "ABOUT BENJAMIN",
-      "text": "In my role as a Platform Lead and previous Project Manager, I've worked on over 17 medium to large projects, which has given me exposure and experience delivering varying architectures across different types of systems. From three tier web architectures, to HPC computing grids, in-memory analysis cubes, real-time payment processing and batch processing systems, I've worked with experts to implement solutions across varying technologies to suit the Business' requirements and align to the target Organisation architecture.",
+      "section": "Aspiration",
+      "text": "Aspiration to take my strong technical knowledge, stakeholder management and overall IT experience, and apply it to designing and delivering Cloud Technologies as a Cloud Architect. Initially passing the Caltech Post Graduate Program in Cloud Computing and later passing the AWS Solutions Architect – Associate certification. Working towards securing the associated certifications for Microsoft Azure Architect Design.",
       "order": 1
     },
     {
-      "section": "ABOUT BENJAMIN",
-      "text": "My passion for technology started when I was 16, helping my father to learn how to use a 286 XT PC so he can do digital drafting and architecture housing design diagrams.  Ever since, I've had a passion for technology and constantly trying to learn the next or new technologies.",
-      "order": 1
-    },
-    {
-      "section": "NEXT CAREER GOAL",
-      "text": "My next career goal and challenge is to take my passion for technology, along with my vast experience, delivery of key architectures and stakeholder management and apply it to transition my role and career as a Solution Architect.",
+      "section": "Current Role",
+      "text": "In my current role, as a Platform Lead, my role is to lead 11 Agile squads to deliver Business value and best of breed solutions to the Bank of Singapore Users, including Clients, Relationship Managers and Operations Staff.",
       "order": 2
     },
     {
-      "section": "NEXT CAREER GOAL",
-      "text": "With this as my goal, I'm skilling myself up and getting certified. Starting with completing the Caltech Cloud Computing Program, then passing the AWS Solution Architect Associate, my next focus is the Microsoft Azure certification, then Google Cloud Platform.  This is with the aim to understand and have key experience across key Cloud Platforms.",
+      "section": "Current Role",
+      "text": "Driving the agile transformation agenda with other Scrum Masters to increase adoption within BOS, we provide guidance to other Project Manager cum Scrum Masters at the bank during the transition from traditional waterfall projects to the BOS agile framework.",
+      "order": 2
+    },
+    {
+      "section": "Current Role",
+      "text": "Understanding the people and the technology required to drive change, I have built valuable relationships across the bank to facilitate delivery of Business benefits to Users and the Organisation. Building this network with stakeholders, Agile squads, other Change the Bank and Run the Bank teams, has been key to streamline change.",
       "order": 3
     },
     {
-      "section": "CURRENT ROLE",
-      "text": "In my current role, as a Platform Lead, I'm tasked to lead 11 Agile squads to deliver Business value and best of breed solutions to the Bank of Singapore Users, including Clients, Relationship Managers and Operations Staff.",
-      "order": 3
+      "section": "Previous Roles",
+      "text": "Prior to this position, my role was a Project Manager with 8 years+ experience in the Financial Markets domain delivering projects in the Front and Middle office space across within ANZ and earlier exposure in other Telecommunications and Technology companies.",
+      "order": 4
     },
     {
-      "section": "CURRENT ROLE",
-      "text": "Understanding the people and the technology required to drive change, I have built valuable relationships across the bank to facilitate delivery of Business benefits to Users and the Organisation.  Building this network with stakeholders, Agile squads, other Change the Bank and Run the Bank teams, has been key to streamline change.",
-      "order": 3
-    },
-    {
-      "section": "CURRENT ROLE",
-      "text": "My Project Management skills include managing projects end to end undertaking all aspects of delivery from investment case to Business transition and project closure.  I have worked with Business stakeholders and delivery partners both internally and externally across Australia, Singapore, Hong Kong, India, Philippines and United Kingdom.  ",
-      "order": 3
-    },
-    {
-      "section": "MY WORKING STYLE",
-      "text": "My working style is to take full ownership and drive whatever I'm assigned to completion, building the key relationships along the way to facilitate and align all teams to achieve the key goal.  With a light hearted attitude, a strong EQ (so I'm told) and a view that everyone does the best they can, I manage to gain the respect and dedication of all levels I work with, from the immediate team to external delivery teams to my key stakeholders and seniors.",
-      "order": 3
-    },
-    {
-      "section": "MY WORKING STYLE",
-      "text": "All of this, plus treating people with respect, I've always been seen and treated as a natural leader.  Within nearly every role in my past, I have been highly respected, promoted to more senior roles and been the go-to person for guidance and assistance.",
-      "order": 3
-    }  
+      "section": "Previous Roles",
+      "text": "My Project Management skills include managing projects end to end undertaking all aspects of delivery from investment case to Business transition and project closure. I have worked with Business stakeholders and delivery partners both internally and externally across Australia, Singapore, Hong Kong, India, Philippines and United Kingdom.",
+      "order": 4
+    }
   ],
   "skills": [
     {
@@ -372,7 +357,7 @@
       "position": "Web Developer",
       "title": "Web Developer",
       "project": "",
-      "role": "Working as a Web Developer, I worked with a team to develop dynamic data driven websites for a number of clients, including key hardware provider, holiday website and a number of other websites.",
+      "role": "",
       "achievements": "",
       "order": 20
     },
